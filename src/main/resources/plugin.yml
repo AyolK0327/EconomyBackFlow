@@ -1,0 +1,11 @@
+name: EconomyBackFlow
+version: 1.0.0-SNAPSHOT
+main: cn.ayolk.economybackflow.Main
+authors: [ AyolK ]
+api-version: 1.18
+softdepend: [Vault,CMI,Residence]
+commands:
+  economybackflow:
+    aliases:
+      - "ebf"
+      - "EBF"
