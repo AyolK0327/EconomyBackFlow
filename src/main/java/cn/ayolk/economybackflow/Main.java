@@ -1,8 +1,6 @@
 package cn.ayolk.economybackflow;
 
 import com.Zrips.CMI.CMI;
-import com.bekvon.bukkit.residence.Residence;
-import com.bekvon.bukkit.residence.api.ResidenceApi;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
@@ -53,10 +51,6 @@ public class Main extends JavaPlugin{
         Plugin cmiPlug =getServer().getPluginManager().getPlugin("CMI");
         if(cmiPlug != null){
            CMI cmiAPI = CMI.getInstance();
-        }
-        resPlug = getServer().getPluginManager().getPlugin("Residence");
-        if (resPlug != null) {
-            ResidenceApi resAPI = Residence.getInstance().getAPI();
         }
         if (!setupEconomy()) {
             getLogger().info("vault加载失败！");
