@@ -18,26 +18,31 @@ public class Command implements CommandExecutor {
 
 
         if (args.length == 0 || args[0].equals("help")) {
-            sender.sendMessage("=                       =");
-            sender.sendMessage("/ebf give [player] [amounts] - 给予玩家金币.");
-            sender.sendMessage("/ebf help - 查看帮助.");
-            sender.sendMessage("/ebf versions - 查看版本");
-            sender.sendMessage("=                       =");
+            sender.sendMessage("\n");
+            sender.sendMessage("\n");
+            sender.sendMessage("               "+Prefix+ "  v1.0.0    ");
+            sender.sendMessage("\n");
+            sender.sendMessage(MeTips);
+            sender.sendMessage("\n");
+            sender.sendMessage("/ebf give [player] [amounts] <MessageType> - " + MeGive);
+            sender.sendMessage("/ebf help - " + MeHelp);
+            sender.sendMessage("/ebf versions - " + MeVer);
+            sender.sendMessage("\n");
             return true;
         }
         if (args[0].equals("versions")) {
             sender.sendMessage("版本 1.0.0");
         }
         if (!(sender instanceof Player) || (sender instanceof Player && perms.has(((Player) sender).getPlayer(),"ebf.DoNotGivePlayer.give"))) {
-            if (args[0].equalsIgnoreCase("give") && args.length == 3) {
+            if (args[0].equalsIgnoreCase("give") && args.length >= 3) {
                 String players = args[1];
-
                 UUID uuid = Bukkit.getOfflinePlayer(players).getUniqueId();
                 OfflinePlayer offlinePlayer1 = Bukkit.getOfflinePlayer(uuid);
                 double cost = Double.parseDouble(args[2]);
                 if (econ.has(offlinePlayer, cost)) {
-                    CommandEvent.giveC2(offlinePlayer, cost);
-                    CommandEvent.giveC(offlinePlayer1, cost);
+                    CommandEvent.getWithdraw(offlinePlayer, cost);
+                    CommandEvent.getDeposit(offlinePlayer1, cost);
+                    sender.sendMessage("成功给予玩家 " +offlinePlayer1.getName()+" "+cost +" 金币!");
                     offlinePlayer1.getPlayer().sendRawMessage("收到来自 Server 的 " + cost + " 金币.");
                     return true;
                 } else if (!econ.has(offlinePlayer, cost)) {
@@ -46,7 +51,7 @@ public class Command implements CommandExecutor {
                 }
                 return true;
             }else{
-                sender.sendMessage("使用方法/ebf give [player] [amounts]");
+                sender.sendMessage("使用方法/ebf give [player] [amounts] <MessageType>");
             }
         }
 /*

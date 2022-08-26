@@ -34,6 +34,10 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
                 arguments.add(String.valueOf(a));
             }
         }
+        if(args[0].equalsIgnoreCase("give") && args.length >= 3){
+            arguments.clear();
+        }
+
         /*
         else if (args.length == 2) {
             arguments.clear();
