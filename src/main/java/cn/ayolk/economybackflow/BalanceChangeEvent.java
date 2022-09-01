@@ -15,9 +15,9 @@ public class BalanceChangeEvent implements Listener {
 
         if(perms.has((Player)offlinePlayer,"ebf.ServerBank")){return;}
         //withdraw的钱
-        double cost = event.getFrom() - event.getTo();
+        double Cost = event.getFrom() - event.getTo();
         if(event.getActionType().equals("Withdraw") && event.getSource() == null) {
-            econ.depositPlayer(offlinePlayer, cost);
+            econ.depositPlayer(offlinePlayer, Cost);
 
         }
     }
