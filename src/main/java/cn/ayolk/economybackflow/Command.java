@@ -35,7 +35,7 @@ public class Command implements CommandExecutor {
             sender.sendMessage("版本 1.0.0");
         }
         if(args[0].equals("getuuid") && sender instanceof Player){
-            sender.sendMessage(String.valueOf(Objects.requireNonNull(sender.getServer().getPlayer(sender.getName())).getUniqueId()));
+            sender.sendMessage("玩家 " + sender.getName()+ " 的uuid " + Objects.requireNonNull(sender.getServer().getPlayer(sender.getName())).getUniqueId());
             return true;
         }
         if (!(sender instanceof Player) || (sender instanceof Player && perms.has(((Player) sender).getPlayer(),"ebf.DoNotGivePlayer.give"))) {
