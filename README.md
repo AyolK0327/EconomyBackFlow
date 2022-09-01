@@ -4,7 +4,7 @@
 1. 将放入plugins文件,并重启服务器.
 2. 获取中央账户的UUID并填入config.yml文件中的ServerBank.
 ```
-ServerBank: xxxxx
+ServerBank: "2858b29e-906a-3526-966d-32cbf6012bf3"
 ```
 3. 重启服务器即可开始使用.
 # 注意事项
