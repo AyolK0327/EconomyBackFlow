@@ -47,7 +47,8 @@ public class Main extends JavaPlugin{
         MeVer = Objects.requireNonNull(config.getString("Message.help.Version")).replace("&","§");
         ServerBank = config.getString("ServerBank");
         ResidenceEnable = config.getBoolean("Residence.enable");
-        offlinePlayer = getOfflinePlayer(Objects.requireNonNull(config.getString("ServerBank")));
+        UUID id = UUID.fromString("2858b29e-906a-3526-966d-32cbf6012bf3");
+        offlinePlayer = getOfflinePlayer(id);
         getLogger().info("插件正在载入...");
         super.onLoad();
         Plugin cmiPlug =getServer().getPluginManager().getPlugin("CMI");

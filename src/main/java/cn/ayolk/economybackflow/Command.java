@@ -51,6 +51,7 @@ public class Command implements CommandExecutor {
                     offlinePlayer1.getPlayer().sendRawMessage("收到来自 Server 的 " + cost + " 金币.");
                     return true;
                 } else if (!econ.has(offlinePlayer, cost)) {
+                    sender.sendMessage(offlinePlayer.toString());
                     offlinePlayer1.getPlayer().sendRawMessage(Objects.requireNonNull(config.getString("Message.Prefix")).replace("&","§") + " 服务器中央银行没钱了,取消本次金币奖励.");
                     return true;
                 }
