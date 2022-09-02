@@ -6,6 +6,7 @@ Message:
     Give: "&7给予玩家金币."
     help: "&7查看帮助."
     Version: "&7查看版本."
+    GetUuid: "&7获取玩家的uuid"
 
 
 

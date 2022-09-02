@@ -34,12 +34,17 @@ public class Main extends JavaPlugin{
     static String MeGive;
     static String MeHelp;
     static String MeVer;
+    static String GetUuid;
     private static final Logger log = Logger.getLogger("Minecraft");
+    static Plugin plugin;
+
     @Override
     public void onLoad() {
         reloadConfig();
         saveDefaultConfig();
         config = getConfig();
+        plugin = this;
+        GetUuid = config.getString("Message.help.GetUuid").replace("&","§");
         Prefix = Objects.requireNonNull(config.getString("Message.Prefix")).replace("&","§");
         MeGive = Objects.requireNonNull(config.getString("Message.help.Give")).replace("&","§");
         MeTips = Objects.requireNonNull(config.getString("Message.help.tips")).replace("&","§");
@@ -51,9 +56,13 @@ public class Main extends JavaPlugin{
         offlinePlayer = getOfflinePlayer(id);
         getLogger().info("插件正在载入...");
         super.onLoad();
-        Plugin cmiPlug =getServer().getPluginManager().getPlugin("CMI");
+
+    }
+
+    @Override
+    public void onEnable() {Plugin cmiPlug =getServer().getPluginManager().getPlugin("CMI");
         if(cmiPlug != null){
-           CMI cmiAPI = CMI.getInstance();
+            CMI cmiAPI = CMI.getInstance();
         }
         if (!setupEconomy()) {
             getLogger().info("vault加载失败！");
@@ -61,10 +70,6 @@ public class Main extends JavaPlugin{
             return;
         }
         setupPermissions();
-    }
-
-    @Override
-    public void onEnable() {
         this.getCommand("economybackflow").setExecutor(new Command());
         getCommand("economybackflow").setTabCompleter(new TabCompleter());
         this.getServer().getPluginManager().registerEvents(new BalanceChangeEvent(),this);
@@ -90,8 +95,6 @@ public class Main extends JavaPlugin{
         perms = rsp.getProvider();
         return perms != null;
     }
-
-
     @Override
     public void onDisable() {
         super.onDisable();

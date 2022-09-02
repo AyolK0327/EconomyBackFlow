@@ -21,12 +21,13 @@ public class Command implements CommandExecutor {
         if (args.length == 0 || args[0].equals("help")) {
             sender.sendMessage("\n");
             sender.sendMessage("\n");
-            sender.sendMessage("               "+Prefix+ "  v1.0.0    ");
+            sender.sendMessage("               "+Prefix + " - "+plugin.getDescription().getVersion() );
             sender.sendMessage("\n");
-            sender.sendMessage(MeTips);
+            sender.sendMessage(MeTips );
             sender.sendMessage("\n");
             sender.sendMessage("/ebf give [player] [amounts] <MessageType> - " + MeGive);
             sender.sendMessage("/ebf help - " + MeHelp);
+            sender.sendMessage("/ebf getuuid - " + GetUuid);
             sender.sendMessage("/ebf versions - " + MeVer);
             sender.sendMessage("\n");
             return true;
